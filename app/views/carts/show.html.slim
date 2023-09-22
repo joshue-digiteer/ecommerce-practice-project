@@ -1,0 +1,22 @@
+h1
+  = @payment.created_at
+h2
+  = @payment.shipping_address
+br
+h3
+  | Customer Name: 
+  = "#{@user.first_name} #{@user.last_name}"
+h4
+  | Email: 
+  = @user.email
+br
+h2
+  | Orders:
+- @cart.orders.each do |order|
+  = order.product.name
+  =< order.quantity
+  =< order.total_price
+  br
+h3
+  | Total Price: 
+  = @cart.total_price

@@ -1,0 +1,40 @@
+/ product is a local variable which will be assigned with a product instance passed by the parent view
+
+= form_with model: product do |form|
+    div
+        = form.label :name
+        br
+        = form.text_field :name
+        - product.errors.full_messages_for(:name).each do |message|
+            div
+                = message
+    br
+    div
+        = form.label :description
+        br
+        = form.text_area :description
+        br
+        - product.errors.full_messages_for(:description).each do |message|
+            div
+                = message
+    br
+    div
+        = form.label :quantity
+        br
+        = form.number_field :quantity
+        br
+        - product.errors.full_messages_for(:quantity).each do |message|
+            div
+                = message
+    br
+    div
+        = form.label :price
+        br
+        = form.number_field :price
+        br
+        - product.errors.full_messages_for(:price).each do |message|
+            div
+                = message
+    br
+    div
+        = form.submit

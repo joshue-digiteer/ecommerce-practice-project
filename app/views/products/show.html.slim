@@ -1,0 +1,89 @@
+h1
+  = @product.name
+div
+  p
+    | Description
+  ul
+    li
+      = @product.description
+div
+  p
+    | Quantity
+  ul
+    li
+      = @product.quantity
+div
+  p
+    | Price
+  ul
+    li
+      = number_to_currency(@product.price, unit: '₱')
+- if current_user.is_admin?
+  = link_to "Edit Product", edit_product_path(@product)
+  br
+  = link_to "Delete Product", product_path(@product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+- else
+  - if @product.quantity > 1
+    - if @order.nil?
+      = form_with url: product_orders_path(@product) do |form|
+        = form.label "Input quantity to order:"
+        =< form.number_field :quantity, value: 1, min: 1, max: @product.quantity
+        =< form.submit "Add to cart"
+    - else
+      = form_with url: product_order_path(id: @order.id, product_id: @product.id), method: :patch do |form|
+        = form.label "Input quantity to order:"
+        =< form.number_field :quantity, value: @order.quantity, min: 1, max: @product.quantity
+        =< form.submit "Add to cart"
+  - else
+    p
+      b
+        u
+          | Out of stock!
+- if not current_user.is_admin?
+  - if @wish_list.nil?
+    br
+    = button_to "Add to Wish List", wish_lists_path, params: {product_id: @product.id, method: :post}
+  - else
+    br
+    p
+      b
+        u
+          | You have wishlisted this product.
+    = link_to "Remove from Wish List", wish_list_path(@wish_list.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+h2
+  | Reviews:
+- # If user is a customer, either render a form for submitting or review or display customer's existing review
+- # Only one review per customer to the product
+- if not current_user.is_admin?
+  - if @user_review.nil?
+    = render "reviews/form", review: @review
+    br
+  - else
+    h4
+      strong
+        |  Your review: 
+    p
+      strong
+        |  Score: 
+      = @user_review.score
+    p
+      strong
+        |  Comment: 
+      = @user_review.comment
+    - if not @user_review.admin_reply.nil?
+      p
+        strong
+          |  Admin: 
+        = @user_review.admin_reply
+  br
+- if @product.reviews.any?
+  = render @reviews
+  - if @pagy_reviews.pages > 1
+    == pagy_nav(@pagy_reviews) if @pagy_reviews.pages > 1
+    br
+    == pagy_info(@pagy_reviews) if @pagy_reviews.pages > 1
+    br
+    br
+- else
+  p
+    |  No reviews yet. 

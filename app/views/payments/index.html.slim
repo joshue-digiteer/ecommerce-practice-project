@@ -1,0 +1,20 @@
+h1
+  = current_user.is_admin? ? "User" : "Your"
+  |< Payments
+- if not @payments.empty?
+  - @payments.each do |payment|
+    = payment.created_at
+    =< payment.shipping_address
+    =< link_to "View Order", cart_path(payment.cart_id)
+    br
+- else
+  p
+  | You have no purchases made yet. 
+
+/ Pagination
+- if @pagy.pages > 1
+  == pagy_nav(@pagy)
+  br
+  == pagy_info(@pagy)
+  br
+  br

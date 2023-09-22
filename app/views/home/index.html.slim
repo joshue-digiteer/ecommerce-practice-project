@@ -1,0 +1,26 @@
+h1
+    |   E-Commerce Application
+
+- if user_signed_in?
+    div
+        |   Welcome
+        =< current_user.first_name
+        |!
+    br
+
+    = link_to "#{current_user.is_admin? ? "View" : "Shop"} Products", products_path
+    br
+
+    = link_to "View Purchases", payments_path
+
+    - if not current_user.is_admin?
+        br
+        = link_to "View Wish List", wish_lists_path
+
+    br
+    br
+
+    = link_to "Sign out", destroy_user_session_path, \
+    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+- else
+    = link_to "Sign in", new_user_session_path

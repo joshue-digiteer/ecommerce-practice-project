@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1
+  comment: MyText
+  admin_reply: MyText
+  user: one
+  product: one
+
+two:
+  score: 1
+  comment: MyText
+  admin_reply: MyText
+  user: two
+  product: two

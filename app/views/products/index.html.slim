@@ -1,0 +1,30 @@
+h1
+  | Products
+- # For filtering
+div
+  = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "input->form#submit" } do
+    = label_tag "Filter:"
+    =< text_field_tag "filter"
+br
+= turbo_frame_tag "products" do
+  - @products.each do |product|
+    = link_to product.name, product, data: { turbo_frame: "_top"}
+    =< "- #{product.description}"
+    br
+br
+- # Pagination
+- if @pagy.pages > 1
+  == pagy_nav(@pagy) if @pagy.pages > 1
+  br
+  == pagy_info(@pagy) if @pagy.pages > 1
+  br
+  br
+- if current_user.is_admin?
+  = link_to "Create New Product", new_product_path
+- else
+  = render "shared/cart"
+  - if not @cart.orders.empty?
+    h3
+      |  Total Price: 
+      = @cart.total_price
+    = link_to "Checkout", new_payment_path

@@ -1,0 +1,19 @@
+h1
+    |   Your Wish List:
+
+- if not @wish_lists.empty?
+    - @wish_lists.each do |wish_list|
+        = link_to wish_list.product.name, product_path(wish_list.product)
+        |   -
+        = link_to " Delete", wish_list_path(wish_list.id),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+        br
+- else
+    |   You have no products wishlisted yet.
+
+- if @pagy.pages > 1
+    == pagy_nav(@pagy)
+    br
+    == pagy_info(@pagy)
+    br
+    br

@@ -1,0 +1,19 @@
+h4
+  |  Write a review for this product: 
+= form_with url: product_reviews_path(@product.id) do |form|
+  p
+    = form.label "Score:"
+    =< form.number_field :score, value: 1, min: 0, max: 10
+    - if review.present?
+      - review.errors.full_messages_for(:score).each do |message|
+        p
+          = message
+  p
+    = form.label "Comment:"
+    =< form.text_area :comment
+    - if review.present?
+      - review.errors.full_messages_for(:comment).each do |message|
+        p
+          = message
+  p
+    = form.submit "Submit Review"

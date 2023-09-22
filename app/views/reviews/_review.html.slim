@@ -1,0 +1,28 @@
+- # A review partial for showing all reviews to a product
+- if current_user.id != review.user_id
+  h4
+    strong
+      = "#{review.user.first_name} #{review.user.last_name}"
+  p
+    strong
+      |  Score: 
+    = review.score
+  p
+    strong
+      |  Comment: 
+    = review.comment
+  - if not review.admin_reply.nil?
+    p
+      strong
+        |  Admin: 
+      = review.admin_reply
+  - else
+    - if current_user.is_admin?
+      - # The url is the same as model: [ @product, @product.reviews.build ]
+      = form_with url: product_review_path(id: review.id, product_id: review.product_id), method: :patch do |form|
+        p
+          = form.label "Reply:"
+          = form.text_area :admin_reply
+        p
+          = form.submit "Submit Reply"
+  br

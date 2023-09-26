@@ -117,7 +117,7 @@ Optionally:
 ```
 
 3. ~~Study slims and convert all html code to slims.~~
-4. Study Hotwire Turbo.
+4. Study Hotwire Turbo (Turbo and StimulusJS)
 5. Study and practice all modules of devise.
 
 Optional:

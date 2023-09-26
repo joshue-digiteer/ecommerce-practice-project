@@ -75,8 +75,6 @@ gem "devise", "~> 4.9"
 
 gem "pagy", "~> 6.0"
 
-gem "bootstrap-sass", "~> 3.4"
-
 gem "autoprefixer-rails", "~> 10.4"
 
 gem "debouncer", "~> 0.2.2"
@@ -84,3 +82,5 @@ gem "debouncer", "~> 0.2.2"
 gem "slim", "~> 5.1"
 
 gem "html2slim", github: "slim-template/html2slim"
+
+gem "tailwindcss-rails", "~> 2.0"

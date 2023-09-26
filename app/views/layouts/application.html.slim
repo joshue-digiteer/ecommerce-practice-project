@@ -9,7 +9,6 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    .container
       = link_to '<= Back to Home Page', root_path unless current_page?(root_path)
       = yield
       p.notice

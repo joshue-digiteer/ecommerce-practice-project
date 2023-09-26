@@ -81,9 +81,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -109,7 +106,6 @@ GEM
       warden (~> 1.2.3)
     erubi (1.12.0)
     execjs (2.9.1)
-    ffi (1.15.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hpricot (0.8.6)
@@ -202,8 +198,6 @@ GEM
       railties (>= 5.2)
     rexml (3.2.6)
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     selenium-webdriver (4.12.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -221,6 +215,8 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
+    tailwindcss-rails (2.0.30-x86_64-linux)
+      railties (>= 6.0.0)
     temple (0.10.2)
     thor (1.2.2)
     tilt (2.3.0)
@@ -252,7 +248,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails (~> 10.4)
   bootsnap
-  bootstrap-sass (~> 3.4)
   capybara
   debouncer (~> 0.2.2)
   debug
@@ -268,6 +263,7 @@ DEPENDENCIES
   slim (~> 5.1)
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

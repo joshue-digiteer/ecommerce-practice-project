@@ -1,10 +1,12 @@
 # Digiteer Practice Project: E-Commerce Web Application
 
 ##### Author:
+
 * Joshue Jadie
 
 ###### Last Updated:
-* September 15, 2023
+
+* September 26, 2023
 
 <!-- # README
 

@@ -123,4 +123,4 @@ Optionally:
 Optional:
 
 * Study rspec (for behavior driven development).
-* Add bootstrap to practice project.
+* Add front-end designs (e.g. bootstrap, tailwind) to practice project.

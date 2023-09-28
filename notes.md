@@ -121,6 +121,11 @@ Optionally:
 5. Study scope in rails.
 6. Study and practice all modules of devise.
 
+## 09/27/23
+1. Add turbo-stream to practice project (refer to reference video).
+2. Add modals to practice project (refer to reference video).
+3. Look on nested forms and implement product variants per product - [Reference](https://www.driftingruby.com/episodes/building-a-questionnaire)
+
 Optional:
 
 * Study rspec (for behavior driven development).

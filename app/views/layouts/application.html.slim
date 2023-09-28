@@ -7,16 +7,13 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
-    / Uncomment to include tailwind css
-    / = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    / Tailwind CSS
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
 
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    = link_to '<= Back to Home Page', root_path unless current_page?(root_path)
-    = yield
-    p.notice
-      = notice
-    p.notice
-      = alert
-    / = render "layouts/flash"
+    main.container.mx-auto.mt-28.px-5
+      = link_to 'Back to Home Page', root_path unless current_page?(root_path)
+      = yield
+      = render "layouts/flash"

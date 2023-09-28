@@ -20,8 +20,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-    p "Hello World!"
-
     # Check if user is a customer
     if not current_user.is_admin?
       # Get customer's cart

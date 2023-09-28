@@ -4,9 +4,12 @@
       | Products
     
     / For filtering
-    div
+    div.flex.flex-row.space-x-10
       = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "input->form#submit" } do
         =< text_field_tag "filter", nil, placeholder: "Filter", class: "form-field"
+
+      - if current_user.is_admin?
+        = link_to "Create New Product", new_product_path, class: "create-product"
 
   .min-w-full.my-8
     .table.font-bold.min-w-full
@@ -22,7 +25,6 @@
     = turbo_frame_tag "products" do
       = render @products
       == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"')
-    
 
 / / For Filtering
 / div

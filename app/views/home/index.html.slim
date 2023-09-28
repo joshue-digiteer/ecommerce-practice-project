@@ -8,12 +8,13 @@ div.flex.flex-col.space-y-5
 					=< current_user.first_name
 					|!
 
-			= link_to "#{current_user.is_admin? ? "View" : "Shop"} Products", products_path, class: "link-get"
+			div.flex.flex-row.space-x-5
+				= link_to "#{current_user.is_admin? ? "View" : "Shop"} Products", products_path, class: "link-get"
 
-			= link_to "View Purchases", payments_path, class: "link-get"
+				= link_to "View Purchases", payments_path, class: "link-get"
 
-			- if not current_user.is_admin?
-					= link_to "View Wish List", wish_lists_path, class: "link-get"
+				- if not current_user.is_admin?
+						= link_to "View Wish List", wish_lists_path, class: "link-get"
 
 			= link_to "Sign out", destroy_user_session_path, \
 			data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "link-delete"

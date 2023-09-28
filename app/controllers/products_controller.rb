@@ -78,7 +78,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to products_path, status: :see_other
+    # If format (html) is not present, render turbo_stream by default (app/views/products/destroy.turbo_stream.slim)
+    if params[:format].present?
+      redirect_to products_path, status: :see_other
+    end
   end
   
   private

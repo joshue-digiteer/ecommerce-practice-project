@@ -14,6 +14,6 @@ html
     = javascript_importmap_tags
   body
     main.container.mx-auto.mt-28.mb-28.px-5
-      = link_to 'Back to Home Page', root_path, class: "link-get mb-5" unless current_page?(root_path)
+      = link_to 'Back to Home Page', root_path, class: "link-back mb-5" unless current_page?(root_path)
       = yield
       = render "layouts/flash"

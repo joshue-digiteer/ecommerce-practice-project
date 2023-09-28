@@ -52,8 +52,8 @@ div
     = link_to "Remove from Wish List", wish_list_path(@wish_list.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
 h2
   | Reviews:
-- # If user is a customer, either render a form for submitting or review or display customer's existing review
-- # Only one review per customer to the product
+/ If user is a customer, either render a form for submitting or review or display customer's existing review
+/ Only one review per customer to the product
 - if not current_user.is_admin?
   - if @user_review.nil?
     = render "reviews/form", review: @review

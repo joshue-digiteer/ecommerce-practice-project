@@ -3,7 +3,29 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @pagy, @products = pagy(Product.where("name LIKE ?", "%#{params[:filter]}%").all.order(:name))
+    products = Product.all
+
+    if params[:filter].present?
+      products = products.where("name ILIKE ?", "%#{params[:filter]}%").all
+    end
+
+    if params[:stock].present?
+      products = products.where("quantity > 0")
+    end
+
+    sort_options = {
+      "name_asc" => {name: :asc},
+      "name_desc" => {name: :desc},
+      "price_asc" => {price: :asc},
+      "price_desc" => {price: :desc}
+    }
+
+    if params[:sort].present?
+      products = products.order(sort_options[params[:sort]])
+      # debugger
+    end
+
+    @pagy, @products = pagy(products)
 
     # If user is a customer, get cart
     if not current_user.is_admin?

@@ -122,6 +122,7 @@ Optionally:
 6. Study and practice all modules of devise.
 
 ## 09/27/23
+
 1. Add turbo-stream to practice project (refer to reference video).
 2. Add modals to practice project (refer to reference video).
 3. Look on nested forms and implement product variants per product - [Reference](https://www.driftingruby.com/episodes/building-a-questionnaire)
@@ -130,3 +131,7 @@ Optional:
 
 * Study rspec (for behavior driven development).
 * Add front-end designs (e.g. bootstrap, tailwind) to practice project.
+
+Problems:
+
+* Updating pagy when deleting a product from the list (index page).

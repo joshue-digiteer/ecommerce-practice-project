@@ -1,26 +1,27 @@
-h1.font-bold.text-4xl
-    |   E-Commerce Application
+div.flex.flex-col.space-y-5
+    h1.font-bold.text-4xl
+        |   E-Commerce Application
 
-- if user_signed_in?
-    div
-        |   Welcome
-        =< current_user.first_name
-        |!
-    br
-
-    = link_to "#{current_user.is_admin? ? "View" : "Shop"} Products", products_path
-    br
-
-    = link_to "View Purchases", payments_path
-
-    - if not current_user.is_admin?
+    - if user_signed_in?
+        div.font-bold
+            |   Welcome
+            =< current_user.first_name
+            |!
         br
-        = link_to "View Wish List", wish_lists_path
 
-    br
-    br
+        = link_to "#{current_user.is_admin? ? "View" : "Shop"} Products", products_path
+        br
 
-    = link_to "Sign out", destroy_user_session_path, \
-    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
-- else
-    = link_to "Sign in", new_user_session_path
+        = link_to "View Purchases", payments_path
+
+        - if not current_user.is_admin?
+            br
+            = link_to "View Wish List", wish_lists_path
+
+        br
+        br
+
+        = link_to "Sign out", destroy_user_session_path, \
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+    - else
+        = link_to "Sign in", new_user_session_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium w-24"

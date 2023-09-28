@@ -62,6 +62,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # For automatic reloading when making changes
+  gem "rails_live_reload"
 end
 
 group :test do

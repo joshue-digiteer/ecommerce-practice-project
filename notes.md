@@ -132,8 +132,9 @@ Optional:
 * Study rspec (for behavior driven development).
 * Add front-end designs (e.g. bootstrap, tailwind) to practice project.
 
-Questions / Problems:
+Current Challenges:
 
+* How to make a modal dialog (appear in center of screen and darken background, etc.) with Tailwind?
 * How to update pagy when doing Create or Destroy operations in a list?
 * In a form with multiple fields (select, input, click, etc.), how to debounce only one field upon submission?
 * Do we eventually have to use broadcasting with turbo streams in a real project?

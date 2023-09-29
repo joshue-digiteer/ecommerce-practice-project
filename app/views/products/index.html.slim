@@ -30,7 +30,10 @@
     = turbo_frame_tag "products_list" do
       = turbo_frame_tag "products" do
         = render @products
-      == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"') if @pagy.pages > 1
+      
+      / Pagination
+      - if @pagy.pages > 1
+        == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"')
 
   // Create and Edit Product modal (used with turbo)
   = turbo_frame_tag "modal"

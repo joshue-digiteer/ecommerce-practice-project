@@ -117,15 +117,15 @@ Optionally:
 ```
 
 3. ~~Study slims and convert all html code to slims.~~
-4. Study Hotwire Turbo (Turbo and StimulusJS).
-5. Study scope in rails.
-6. Study and practice all modules of devise.
+4. ~~Study Hotwire Turbo (Turbo and StimulusJS).~~
 
 ## 09/27/23
 
 1. Add turbo-stream to practice project (refer to reference video).
 2. Add modals to practice project (refer to reference video).
 3. Look on nested forms and implement product variants per product - [Reference](https://www.driftingruby.com/episodes/building-a-questionnaire)
+4. Study scope in rails.
+5. Study and practice all modules of devise.
 
 Optional:
 
@@ -135,4 +135,5 @@ Optional:
 Questions / Problems:
 
 * How to update pagy when doing Create or Destroy operations in a list?
+* In a form with multiple fields (select, input, click, etc.), how to debounce only one field upon submission?
 * Do we eventually have to use broadcasting with turbo streams in a real project?

@@ -132,6 +132,7 @@ Optional:
 * Study rspec (for behavior driven development).
 * Add front-end designs (e.g. bootstrap, tailwind) to practice project.
 
-Problems:
+Questions / Problems:
 
-* Updating pagy when deleting a product from the list (index page).
+* How to update pagy when doing Create or Destroy operations in a list?
+* Do we eventually have to use broadcasting with turbo streams in a real project?

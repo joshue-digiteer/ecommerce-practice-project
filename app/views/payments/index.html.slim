@@ -1,16 +1,35 @@
-h1
+h1.font-bold.text-4xl
   = current_user.is_admin? ? "User" : "Your"
   |< Payments
-- if not @payments.empty?
-  - @payments.each do |payment|
-    = payment.created_at
-    =< payment.shipping_address
-    =< link_to "View Order", cart_path(payment.cart_id)
-    br
-- else
-  p
-  | You have no purchases made yet. 
 
-/ Pagination
-- if @pagy.pages > 1
-  == pagy_nav(@pagy)
+/ - if not @payments.empty?
+/   - @payments.each do |payment|
+/     = payment.created_at
+/     =< payment.shipping_address
+/     =< link_to "View Order", cart_path(payment.cart_id)
+/     br
+/ - else
+/   p
+/   | You have no purchases made yet. 
+
+/ / Pagination
+/ - if @pagy.pages > 1
+/   == pagy_nav(@pagy)
+
+.my-8.min-w-full
+  - unless @payments.empty?
+    .table.font-bold.min-w-full
+      div
+        | Ordered At
+      div
+        | Shipping Address
+      div
+        | Total Price
+      div
+    = render @payments
+  - else
+    p.font-bold.text-xl
+      | You have no purchases made yet.
+
+  - if @pagy.pages > 1
+    == pagy_nav(@pagy)

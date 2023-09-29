@@ -1,19 +1,20 @@
 h1.font-bold.text-4xl
-    | Your Wish List:
+	| Your Wish List
 
-- unless @wish_lists.empty?
-    - @wish_lists.each do |wish_list|
-        = link_to wish_list.product.name, product_path(wish_list.product)
-        |   -
-        = link_to " Delete", wish_list_path(wish_list.id),
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
-        br
-- else
-    | You have no products wishlisted yet.
+.my-8.min-w-full
+	- unless @wish_lists.empty?
+		.table.font-bold.min-w-full
+			div
+				| Product
+			div
+				| Description
+			div
+				| Price
+			div
+		= render @wish_lists
+	- else
+		p.font-bold.text-xl
+			| You have no products wishlisted yet.
 
-- if @pagy.pages > 1
-    == pagy_nav(@pagy)
-    br
-    == pagy_info(@pagy)
-    br
-    br
+	- if @pagy.pages > 1
+		== pagy_nav(@pagy)

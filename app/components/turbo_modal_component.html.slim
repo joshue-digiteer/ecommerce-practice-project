@@ -1,0 +1,7 @@
+= turbo_frame_tag "modal" do
+  = tag.div data: { controller: "turbo-modal", turbo_modal_target: "modal", \
+                    action: "turbo:submit-end->turbo-modal#submitEnd keyup@window->turbo-modal#closeWithKeyboard click@window->turbo-modal#closeBackground" } do
+    h1.font-bold.text-4xl
+      = @title
+    = content
+    = button_tag "Close", data: { action: "turbo-modal#hideModal" }, class: "link-delete"

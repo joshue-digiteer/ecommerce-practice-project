@@ -1,4 +1,2 @@
-h1
-  |  Edit Product 
-- # article local variable in partials will be assigned with @article
-= render "form", product: @product
+= render TurboModalComponent.new(title: "Edit Product") do
+  = render "form", product: @product 

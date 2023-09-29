@@ -87,3 +87,5 @@ gem "slim", "~> 5.1"
 gem "html2slim", github: "slim-template/html2slim"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "view_component", "~> 3.6"

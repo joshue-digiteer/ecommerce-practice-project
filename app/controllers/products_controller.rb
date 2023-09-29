@@ -73,13 +73,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    if @product.save
-      # redirect_to is used after a successful database edit in order to cause the browser to make a new request
-      # Otherwise, if the user refreshes the page, the browser will make the same request, and the mutation will be repeated
-      redirect_to products_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @product.save
+
+    # if @product.save
+    #   # redirect_to is used after a successful database edit in order to cause the browser to make a new request
+    #   # Otherwise, if the user refreshes the page, the browser will make the same request, and the mutation will be repeated
+    #   redirect_to products_path
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def edit
@@ -89,11 +91,13 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
-    if @product.update(product_params)
-      redirect_to @product
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @product.update(product_params)
+
+    # if @product.update(product_params)
+    #   redirect_to @product
+    # else
+    #   render :edit, status: :unprocessable_entity
+    # end
   end
 
   def destroy

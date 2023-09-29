@@ -1,4 +1,2 @@
-h1
-  |  New Product 
-- # product local variable in partials will be assigned with @product
-= render "form", product: @product
+= render TurboModalComponent.new(title: "New Product") do
+  = render "form", product: @product 

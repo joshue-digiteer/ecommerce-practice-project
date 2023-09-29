@@ -1,0 +1,7 @@
+- if @product.errors.any?
+  = turbo_stream.update "modal" do
+    = render TurboModalComponent.new(title: "New Product") do
+      = render "form", product: @product 
+- else
+  = turbo_stream.append "products" do
+    = render 'products/product', product: @product

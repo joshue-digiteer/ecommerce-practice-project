@@ -10,6 +10,6 @@ h2.font-bold.text-4xl
   - if devise_mapping.rememberable?
       = f.check_box :remember_me
       =< f.label :remember_me
-  .my-5
+  .my-5.flex.flex-row.space-x-5
     = f.submit "Sign in", class: "btn-get"
-= render "users/shared/links"
+    = render "users/shared/links"

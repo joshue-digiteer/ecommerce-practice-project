@@ -4,17 +4,14 @@
       | Products
     
     / For filtering
-    div.flex.flex-row.space-x-10
-      = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "change->form#submit" } do
-        div.checkbox
-          = check_box_tag "stock", true, false, class: "checkbox-field"
-          = label_tag "In Stock Only", nil, class: "checkbox-label"
-      
-      = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "change->form#submit" } do
-        = select_tag "sort", options_for_select([ ["Name: A to Z", "name_asc"], ["Name: Z to A", "name_desc"], ["Price: Low to High", "price_asc"], ["Price: High to Low", "price_desc"] ], params[:sort]), class: "select"
-
-      = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "input->form#submit" } do
-        = text_field_tag "filter", nil, placeholder: "Search Product", class: "form-field"
+    div.flex.flex-row.space-x-5
+      = form_with url: products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance", controller: "form", action: "input->form#submit click->form#submit change->form#submit" } do
+        div.flex.flex-row.space-x-5
+          div.checkbox
+            = check_box_tag "stock", true, false, class: "checkbox-field"
+            = label_tag "In Stock Only", nil, class: "checkbox-label"
+          = select_tag "sort", options_for_select([ ["Name: A to Z", "name_asc"], ["Name: Z to A", "name_desc"], ["Price: Low to High", "price_asc"], ["Price: High to Low", "price_desc"] ], params[:sort]), class: "select"
+          = text_field_tag "filter", nil, placeholder: "Search Product", class: "form-field"
 
       - if current_user.is_admin?
         = link_to "Create New Product", new_product_path, class: "create-product"

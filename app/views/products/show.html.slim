@@ -1,89 +1,89 @@
-h1
+h1.font-bold.text-4xl.mb-5
   = @product.name
-div
-  p
+
+div.mb-5
+  h2.font-bold.text-2xl
     | Description
-  ul
-    li
-      = @product.description
-div
-  p
+  p.text-lg
+    = @product.description
+
+div.mb-5
+  h2.font-bold.text-2xl
     | Quantity
-  ul
-    li
-      = @product.quantity
-div
-  p
+  p.text-lg
+    = @product.quantity
+
+div.mb-5
+  h2.font-bold.text-2xl
     | Price
-  ul
-    li
-      = number_to_currency(@product.price, unit: '₱')
-- if current_user.is_admin?
-  = link_to "Edit Product", edit_product_path(@product)
-  br
-  = link_to "Delete Product", product_path(@product, format: :html), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
-- else
+  p.text-lg
+    = number_to_currency(@product.price, unit: '₱')
+
+- unless current_user.is_admin?
   - if @product.quantity > 1
-    - if @order.nil?
-      = form_with url: product_orders_path(@product) do |form|
-        = form.label "Input quantity to order:"
-        =< form.number_field :quantity, value: 1, min: 1, max: @product.quantity
-        =< form.submit "Add to cart"
-    - else
-      = form_with url: product_order_path(id: @order.id, product_id: @product.id), method: :patch do |form|
-        = form.label "Input quantity to order:"
-        =< form.number_field :quantity, value: @order.quantity, min: 1, max: @product.quantity
-        =< form.submit "Add to cart"
+    .mb-5
+      - if @order.nil?
+        = form_with url: product_orders_path(@product) do |f|
+          .my-5
+            = f.label "Input quantity to order:"  
+            = f.number_field :quantity, value: 1, min: 1, max: @product.quantity, class: "form-field"
+          .my-5
+            = f.submit "Add to cart", class: "link-get"
+      - else
+        = form_with url: product_order_path(id: @order.id, product_id: @product.id), method: :patch do |f|
+          .my-5
+            = f.label "Input quantity to order:"
+            = f.number_field :quantity, value: @order.quantity, min: 1, max: @product.quantity, class: "form-field"
+          .my-5
+            = f.submit "Add to cart", class: "btn-get"
   - else
-    p
+    p.mb-5
       b
         u
           | Out of stock!
-- if not current_user.is_admin?
+
   - if @wish_list.nil?
-    br
-    = button_to "Add to Wish List", wish_lists_path, params: {product_id: @product.id, method: :post}
+    = button_to "Add to Wish List", wish_lists_path, params: {product_id: @product.id, method: :post}, class: "btn-get"
   - else
-    br
-    p
+    p.mb-2
       b
         u
           | You have wishlisted this product.
-    = link_to "Remove from Wish List", wish_list_path(@wish_list.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
-h2
+
+    = link_to "Remove from Wish List", wish_list_path(@wish_list.id), data: { turbo_method: :delete }, class: "link-delete"
+
+h2.font-bold.text-3xl.mt-10
   | Reviews:
+
 / If user is a customer, either render a form for submitting or review or display customer's existing review
 / Only one review per customer to the product
-- if not current_user.is_admin?
-  - if @user_review.nil?
-    = render "reviews/form", review: @review
-    br
-  - else
-    h4
-      strong
+- unless current_user.is_admin?
+  .mt-5
+    - if @user_review.nil?
+      = render "reviews/form", review: @review
+      br
+    - else
+      h4.font-bold.text-lg
         |  Your review: 
-    p
-      strong
-        |  Score: 
-      = @user_review.score
-    p
-      strong
-        |  Comment: 
-      = @user_review.comment
-    - if not @user_review.admin_reply.nil?
       p
         strong
-          |  Admin: 
-        = @user_review.admin_reply
-  br
-- if @product.reviews.any?
-  = render @reviews
-  - if @pagy_reviews.pages > 1
-    == pagy_nav(@pagy_reviews) if @pagy_reviews.pages > 1
-    br
-    == pagy_info(@pagy_reviews) if @pagy_reviews.pages > 1
-    br
-    br
-- else
-  p
-    |  No reviews yet. 
+          |  Score: 
+        = @user_review.score
+      p
+        strong
+          |  Comment: 
+        = @user_review.comment
+      - if not @user_review.admin_reply.nil?
+        p
+          strong
+            |  Admin: 
+          = @user_review.admin_reply
+
+.mt-5
+  - if @product.reviews.any?
+    = render @reviews
+    - if @pagy_reviews.pages > 1
+      == pagy_nav(@pagy_reviews)
+  - else
+    p.font-bold.text-xl
+      |  No reviews yet. 

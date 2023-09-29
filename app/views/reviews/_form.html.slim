@@ -1,19 +1,20 @@
-h4
+h4.font-bold.text-lg
   |  Write a review for this product: 
-= form_with url: product_reviews_path(@product.id) do |form|
-  p
-    = form.label "Score:"
-    =< form.number_field :score, value: 1, min: 0, max: 10
+
+= form_with url: product_reviews_path(@product.id) do |f|
+  .my-5
+    = f.label "Score:"
+    = f.number_field :score, value: 1, min: 0, max: 10, class: "form-field"
     - if review.present?
       - review.errors.full_messages_for(:score).each do |message|
-        p
+        p.text-red-500
           = message
-  p
-    = form.label "Comment:"
-    =< form.text_area :comment
+  .my-5
+    = f.label "Comment:"
+    = f.text_area :comment, class: "form-field"
     - if review.present?
       - review.errors.full_messages_for(:comment).each do |message|
-        p
+        p.text-red-500
           = message
-  p
-    = form.submit "Submit Review"
+  .my-5
+    = f.submit "Submit Review", class: "btn-get"

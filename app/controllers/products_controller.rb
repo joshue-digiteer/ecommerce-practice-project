@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
 
     if params[:sort].present?
       products = products.order(sort_options[params[:sort]])
-      # debugger
     end
 
     @pagy, @products = pagy(products)

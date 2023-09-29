@@ -1,0 +1,9 @@
+.table.min-w-full
+  div
+    = order.product.name
+  div
+    = number_to_currency(order.product.price, unit: '₱')
+  div
+    = order.quantity
+  div
+    = number_to_currency(order.total_price, unit: '₱')

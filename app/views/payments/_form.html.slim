@@ -1,11 +1,9 @@
-= form_with model: payment do |form|
-    div
-        = form.label "Shipping address:"
-        br
-        = form.text_field :shipping_address
-        - payment.errors.full_messages_for(:shipping_address).each do |message|
-            div
-                message
-    br
-    div
-        = form.submit "Pay Order"
+= form_with model: payment do |f|
+	.my-5
+		= f.label "Shipping address:"
+		= f.text_area :shipping_address, class: "form-field"
+		- payment.errors.full_messages_for(:shipping_address).each do |message|
+			p.text-red-500
+				= message
+	.my-5
+		= f.submit "Submit Payment", class: "btn-get"

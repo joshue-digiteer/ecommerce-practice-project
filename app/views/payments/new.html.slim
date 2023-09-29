@@ -1,7 +1,19 @@
-h1
-    | Checkout
+h1.font-bold.text-4xl
+	| Checkout
 
-= render 'shared/cart'
-br
+.min-w-full.my-8
+	.table.font-bold.min-w-full
+		div
+			| Product
+		div
+			| Price 
+		div
+			| Quantity
+		div
+			| Total Price
+	= render partial: "payments/order", collection: @cart.orders
+	h3.font-bold.text-lg.mt-5.mb-5
+		| Total Price:
+		=< number_to_currency(@cart.total_price, unit: '₱')
 
 = render 'form', payment: @payment

@@ -40,11 +40,13 @@ class PaymentsController < ApplicationController
         # Update product
         product.save
       end
+
       # User is done with using the cart
       @cart.is_current = false
       @cart.save
       
       flash[:notice] = "Order paid successfully. Thank you for shopping!"
+
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity

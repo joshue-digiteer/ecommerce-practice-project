@@ -1,22 +1,39 @@
-h1
+h1.font-bold.text-4xl.mb-2
   = @payment.created_at
-h2
+
+h2.font-bold.text-3xl.mb-10
   = @payment.shipping_address
-br
-h3
-  | Customer Name: 
-  = "#{@user.first_name} #{@user.last_name}"
-h4
-  | Email: 
-  = @user.email
-br
-h2
-  | Orders:
-- @cart.orders.each do |order|
-  = order.product.name
-  =< order.quantity
-  =< order.total_price
-  br
-h3
-  | Total Price: 
-  = @cart.total_price
+
+div.mb-5
+  h3.font-bold.text-2xl
+    | Customer Name:
+  p.text-lg
+    = "#{@user.first_name} #{@user.last_name}"
+
+div.mb-5
+  h3.font-bold.text-2xl
+    | Email:
+  p.text-lg
+    = @user.email
+
+div.mt-10.mb-5
+  h2.font-bold.text-2xl
+    | Orders:
+
+  .min-w-full.my-8
+    .table.font-bold.min-w-full
+      div
+        | Product
+      div
+        | Price
+      div
+        | Quantity
+      div
+        | Total Price
+    = render partial: "shared/order", collection: @cart.orders
+
+div
+  h3.font-bold.text-2xl
+    | Total Price:
+  p.text-lg
+    = number_to_currency(@cart.total_price, unit: '₱')

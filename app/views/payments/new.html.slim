@@ -11,7 +11,7 @@ h1.font-bold.text-4xl
 			| Quantity
 		div
 			| Total Price
-	= render partial: "payments/order", collection: @cart.orders
+	= render partial: "shared/order", collection: @cart.orders
 	h3.font-bold.text-lg.mt-5.mb-5
 		| Total Price:
 		=< number_to_currency(@cart.total_price, unit: '₱')

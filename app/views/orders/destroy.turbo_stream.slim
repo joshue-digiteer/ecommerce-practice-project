@@ -1,0 +1,6 @@
+= turbo_stream.remove(@order)
+
+- if @cart.orders.empty?
+  = turbo_stream.update "cart" do
+    p.font-semibold.text-lg
+      | Currently empty.

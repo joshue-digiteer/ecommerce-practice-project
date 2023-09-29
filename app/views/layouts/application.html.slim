@@ -17,6 +17,3 @@ html
       = link_to 'Back to Home Page', root_path, class: "link-back mb-5" unless current_page?(root_path)
       = yield
       = render "layouts/flash"
-
-      // Modal (used with turbo)
-      = turbo_frame_tag "modal"

@@ -24,8 +24,12 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+
+    # For turbo stream update; if cart becomes empty after deletion of current order
+    @cart = Cart.find(@order.cart_id)
+
     @order.destroy
 
-    redirect_back fallback_location: root_path
+    # redirect_back fallback_location: root_path
   end
 end

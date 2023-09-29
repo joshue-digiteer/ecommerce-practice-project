@@ -30,7 +30,42 @@
     = turbo_frame_tag "products_list" do
       = turbo_frame_tag "products" do
         = render @products
-      == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"')
+      == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"') if @pagy.pages > 1
+
+  // Create and Edit Product modal (used with turbo)
+  = turbo_frame_tag "modal"
+
+  / Cart
+  - unless current_user.is_admin?
+    h1.font-bold.text-4xl
+      | Your Cart:
+    
+    = turbo_frame_tag "cart" do 
+      - if @cart.orders.present?
+        .min-w-full.my-8
+          .table.font-bold.min-w-full
+            div
+              | Product
+            div
+              | Price 
+            div
+              | Quantity
+            div
+              | Total Price
+          = turbo_frame_tag "orders" do
+            / Explicitly stating the partial key is very important or else it will not work
+            / This is IF the collection partial is in another model view directory
+            = render partial: "orders/order", collection: @cart.orders
+
+            h3.font-bold.text-lg.mt-5.mb-5
+              | Total Price:
+              =< number_to_currency(@cart.total_price, unit: '₱')
+            = link_to "Checkout", new_payment_path, data: { turbo_frame: "_top" }, class: "link-get"
+
+      - else
+        p.font-semibold.text-lg
+          | Currently empty.
+        
 
 / / For Filtering
 / div

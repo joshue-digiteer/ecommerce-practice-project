@@ -7,6 +7,9 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
+    / Application tab icon
+    = favicon_link_tag 'e-commerce.png', rel: 'icon', type: 'image/png'
+
     / Tailwind CSS
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
 

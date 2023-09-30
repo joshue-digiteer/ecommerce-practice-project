@@ -5,7 +5,7 @@
     
     / For filtering
     div.flex.flex-row.space-x-5
-      = form_with url: products_path, method: :get, data: { turbo_frame: "products_list", turbo_action: "advance", controller: "form", action: "input->form#submit click->form#submit change->form#submit" } do
+      = form_with url: products_path, method: :get, data: { turbo_frame: "products_list", turbo_action: "advance", controller: "form", action: "input->form#submit change->form#submit" } do
         div.flex.flex-row.space-x-5
           div.checkbox
             = check_box_tag "stock", true, false, class: "checkbox-field"

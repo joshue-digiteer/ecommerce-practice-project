@@ -13,6 +13,9 @@ class Product < ApplicationRecord
 
 	# Product variant (part of nested forms)
 	has_many :product_variants, dependent: :destroy
-	accepts_nested_attributes_for :product_variants, allow_destroy: true, reject_if: proc { |attrs| (attrs['name'].blank? || attrs['quantity'].blank?) }
+	# Do not use reject_if if adding error validation messages for display as it will automatically reject and discard nested input then save the parent model instead
+	accepts_nested_attributes_for :product_variants, allow_destroy: true
+	
+	# accepts_nested_attributes_for :product_variants, allow_destroy: true, reject_if: proc { |attrs| (attrs['name'].blank? || attrs['quantity'].blank?) }
 	# accepts_nested_attributes_for :product_variants, reject_if: ->(attr){ attr['name'].blank? }, allow_destroy: true
 end

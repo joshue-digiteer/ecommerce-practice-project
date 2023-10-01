@@ -5,10 +5,16 @@
     .my-5
       = f.label "Variant Name"
       = f.text_field :name, class: "form-field"
+      - f.object.errors.full_messages_for(:name).each do |message|
+        p.text-red-500
+          = message
     
     .my-5
       = f.label :quantity
       = f.number_field :quantity, class: "form-field"
+      - f.object.errors.full_messages_for(:quantity).each do |message|
+        p.text-red-500
+          = message
     
     small
       / # <--> href="#" - for the link to not redirect to anything at all

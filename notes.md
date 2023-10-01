@@ -130,7 +130,7 @@ Optionally:
 Optional:
 
 * Study rspec (for behavior driven development).
-* Add front-end designs (e.g. bootstrap, tailwind) to practice project.
+* ~~Add front-end designs (e.g. bootstrap, tailwind) to practice project.~~
 
 Current Challenges:
 

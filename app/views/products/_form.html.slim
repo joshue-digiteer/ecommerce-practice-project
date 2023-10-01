@@ -31,7 +31,7 @@
 		| Variants
 	= tag.div data: { controller: "nested-form" } do
 		= tag.template data: { target: "nested-form.template" } do
-			= f.fields_for :product_variants, ProductVariant.new, child_index: 'PRODUCT_VARIANT_RECORD' do |f|
+			= f.fields_for :product_variants, ProductVariant.new, child_index: 'TEMPLATE_RECORD' do |f|
 				= render 'variant_form', f: f
 
 		/ Will create/display multiple product variant forms based on how many variants the product has
@@ -39,7 +39,7 @@
 			= render 'variant_form', f: f
 
 		/ To add another variant
-		= tag.div data: { target: "nested-form.add_product_variant" } do
+		= tag.div data: { target: "nested-form.add_item" } do
 			= link_to "Add Product Variant", "#", data: { action: "nested-form#add_association" }, class: "link-get mt-10 mb-10"
 
 	.my-5

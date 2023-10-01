@@ -25,5 +25,22 @@
 		- product.errors.full_messages_for(:price).each do |message|
 				p.text-red-500
 						= message
+
+	/ Nested form for ProductVariant
+	h2.font-bold.text-3xl
+		| Variants
+	= tag.div data: { controller: "nested-form" } do
+		= tag.template data: { target: "nested-form.template" } do
+			= f.fields_for :product_variants, ProductVariant.new, child_index: 'PRODUCT_VARIANT_RECORD' do |f|
+				= render 'variant_form', f: f
+
+		/ Will create/display multiple product variant forms based on how many variants the product has
+		= f.fields_for :product_variants do |f|
+			= render 'variant_form', f: f
+
+		/ To add another variant
+		= tag.div data: { target: "nested-form.add_product_variant" } do
+			= link_to "Add Product Variant", "#", data: { action: "nested-form#add_association" }, class: "link-get mt-10 mb-10"
+
 	.my-5
 		= f.submit "Submit", class: "btn-get"

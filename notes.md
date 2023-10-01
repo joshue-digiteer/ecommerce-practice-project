@@ -135,7 +135,8 @@ Optional:
 Current Challenges:
 
 * How to make a modal dialog (appear in center of screen and darken background, etc.) with Tailwind?
-* How to update pagy when doing Create or Destroy operations in a list?
-* In a form with multiple fields (select, input, click, etc.), how to debounce only one field upon submission?
+* How to update pagy when doing Create or Destroy operations in the product list?
+* In the filter form with multiple types of filters (select, input, click, etc.), how to debounce only one type of filter?
+* Add pagy to cart and its orders? (in the index page of products, wherein products has its own pagy as well).
+* How to add turbo stream to nested forms as well? (for validation, error message displaying, etc.)
 * Do we eventually have to use broadcasting with turbo streams in a real project?
-* Add pagy to cart and its orders?

@@ -139,4 +139,5 @@ Current Challenges:
 * In the filter form with multiple types of filters (select, input, click, etc.), how to debounce only one type of filter?
 * Add pagy to cart and its orders? (in the index page of products, wherein products has its own pagy as well).
 * How to add turbo stream to nested forms as well? (for validation, error message displaying, etc.)
+* How to properly add validations to optional attributes (e.g. admin_reply of Review)?
 * Do we eventually have to use broadcasting with turbo streams in a real project?

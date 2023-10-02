@@ -1,4 +1,10 @@
-.variant-fields
+= tag.div data: { controller: "dynamic-select" }, class: "variant-fields" do
+  / Select field for color and size
+  .my-5
+    = f.select :variant_type, options_for_select(ProductVariant.variant_type_select, selected: f.object.variant_type), \
+      {}, data: { target: "dynamic-select.select", action: "dynamic-select#selected" }, class: "select"
+
+  / Product Variant fields
   .my-5
     = f.hidden_field :_destroy
 
@@ -20,3 +26,27 @@
       / # <--> href="#" - for the link to not redirect to anything at all
       / Since link is being used, "click->" action is optional but a good practice to always state it explicitly
       = link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "link-delete"
+  
+  / Variant Color fields
+  = tag.div data: { controller: "nested-form", target: "dynamic-select.color" } do
+    = tag.template data: { target: "nested-form.template" } do
+      = f.fields_for :variant_colors, VariantColor.new, child_index: "TEMPLATE_RECORD" do |f|
+        = render "variant_color_form", f: f
+    
+    = f.fields_for :variant_colors do |f|
+      = render "variant_color_form", f: f
+
+    = tag.div data: { target: "nested-form.add_item" } do
+      = link_to "Add Color", "#", data: { action: "nested-form#add_association" }, class: "link-get mt-10 mb-10"
+    
+  / Variant Size fields
+  = tag.div data: { controller: "nested-form", target: "dynamic-select.size" } do
+    = tag.template data: { target: "nested-form.template" } do
+      = f.fields_for :variant_sizes, VariantSize.new, child_index: "TEMPLATE_RECORD" do |f|
+        = render "variant_size_form", f: f
+    
+    = f.fields_for :variant_sizes do |f|
+      = render "variant_size_form", f: f
+
+    = tag.div data: { target: "nested-form.add_item" } do
+      = link_to "Add Size", "#", data: { action: "nested-form#add_association" }, class: "link-get mt-10 mb-10"

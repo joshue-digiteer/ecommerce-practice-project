@@ -113,7 +113,12 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(
         :name, :description, :quantity, :price,
-        product_variants_attributes: [:_destroy, :id, :name, :quantity] # as a nested form of product form; _destroy is important for removing a variant from the nested form, etc.
+        # as a nested form of product form; _destroy is important for removing a variant from the nested form, etc.
+        product_variants_attributes: [
+          :_destroy, :id, :name, :quantity, :variant_type,
+          variant_colors_attributes: [:_destroy, :id, :name],
+          variant_sizes_attributes: [:_destroy, :id, :size]
+        ] 
       )
     end
 end

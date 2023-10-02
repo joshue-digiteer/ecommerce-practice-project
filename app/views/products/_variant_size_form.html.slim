@@ -1,0 +1,15 @@
+.variant-fields
+  .my-5
+    = f.hidden_field :_destroy
+
+    .my-5
+      = f.label "Variant Size"
+      = f.number_field :size, class: "form-field"
+      - f.object.errors.full_messages_for(:size).each do |message|
+        p.text-red-500
+          = message
+    
+    small
+      / # <--> href="#" - for the link to not redirect to anything at all
+      / Since link is being used, "click->" action is optional but a good practice to always state it explicitly
+      = link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "link-delete"

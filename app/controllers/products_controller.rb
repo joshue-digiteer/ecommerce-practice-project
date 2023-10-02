@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # TODO: add filter to Product model (scope?)
     products = Product.all
 
     if params[:filter].present?

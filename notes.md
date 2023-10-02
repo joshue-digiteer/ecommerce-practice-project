@@ -124,7 +124,7 @@ Optionally:
 1. ~~Add turbo-stream to practice project (refer to reference video).~~
 2. ~~Add modals to practice project (refer to reference video).~~
 3. ~~Look on nested forms and implement product variants per product - [Reference](https://www.driftingruby.com/episodes/building-a-questionnaire)~~
-4. Study scope in rails.
+4. ~~Study scope in rails.~~
 5. Study and practice all modules of devise.
 
 Optional:
@@ -136,6 +136,7 @@ Current Challenges:
 
 * How to make a modal dialog (appear in center of screen and darken background, etc.) with Tailwind?
 * How to update pagy when doing Create or Destroy operations in the product list?
+* Use scope in Product model for filtering?
 * In the filter form with multiple types of filters (select, input, click, etc.), how to debounce only one type of filter?
 * Add pagy to cart and its orders? (in the index page of products, wherein products has its own pagy as well).
 * How to add turbo stream to nested forms as well? (for validation, error message displaying, etc.)

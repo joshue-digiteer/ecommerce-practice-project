@@ -3,27 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # TODO: add filter to Product model (scope?)
-    products = Product.all
-
-    if params[:filter].present?
-      products = products.where("name ILIKE ?", "%#{params[:filter]}%").all
-    end
-
-    if params[:stock].present?
-      products = products.where("quantity > 0")
-    end
-
-    sort_options = {
-      "name_asc" => {name: :asc},
-      "name_desc" => {name: :desc},
-      "price_asc" => {price: :asc},
-      "price_desc" => {price: :desc}
-    }
-
-    if params[:sort].present?
-      products = products.order(sort_options[params[:sort]])
-    end
+    products = Product.filter_products(params)
 
     @pagy, @products = pagy(products)
 

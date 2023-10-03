@@ -136,7 +136,7 @@ Current Challenges:
 
 * How to make a modal dialog (appear in center of screen and darken background, etc.) with Tailwind?
 * How to update pagy when doing Create or Destroy operations in the product list?
-* Use scope in Product model for filtering?
+* ~~Use scope in Product model for filtering?~~
 * In the filter form with multiple types of filters (select, input, click, etc.), how to debounce only one type of filter?
 * Add pagy to cart and its orders? (in the index page of products, wherein products has its own pagy as well).
 * How to add turbo stream to nested forms as well? (for validation, error message displaying, etc.)
